@@ -1,0 +1,28 @@
+main:
+  classes: [0, 1, 2]
+  level: 0
+  epochs: 100
+  batch_size: 64
+  model: "resnet50"
+  optim: "Adam"
+  load: False
+  shape: [256, 256]
+  patience: 5
+  stop_cond: "mIoU"
+  cv: 3
+  result_dir: "/mnt/ssdsam/chemotherapy_strage/result_LEV0/"
+  
+dataset:
+  jb_dir: "/mnt/ssdsam/chemotherapy_strage/dataset/202112_chemotherapy/"
+  imgs_dir: "/mnt/ssdsam/chemotherapy_strage/mnt2_LEV0/"
+
+test:
+  weight_dir: "/mnt/ssdsam/chemotherapy_strage/result_LEV0/checkpoints/[0, 1, 2]/"
+  weight_names:
+    - "cv0_epoch8.pth"
+    - "cv1_epoch8.pth"
+    - "cv2_epoch2.pth"
+  output_dir: "/mnt/ssdsam/chemotherapy_strage/result_LEV0/test/"
+  target_data: "test"
+  get_miss: False
+  likelihood: False
